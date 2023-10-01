@@ -7,8 +7,8 @@ Esto lo tengo que hacer en python y crear un .exe que me ejecute el script
 '''
 
 import subprocess
-
-def install_packages():
+#Funcion para instalar los paquetes necesarios para ejecutar el programa
+def instalar_paquetes():
     """
     Instalar los paquetes necesarios para ejecutar el programa
     """
@@ -17,29 +17,28 @@ def install_packages():
         try:
             subprocess.check_call(['pip', 'install', package])
         except subprocess.CalledProcessError as e:
-            print(f"Error, no se han podido instalar los paquetes{package}: {e}\n")
+            print(f"\nError, no se han podido instalar los paquetes{package}: {e}\n")
         else:
-            print(f"[bold green]Paquete {package} instalado satisfactoriamente \n![/bold green]")
+            print(f"\nPaquete {package} instalado satisfactoriamente!\n")
 
-    #limpiar la terminal por sistema operativo
-    if sys.platform.startswith('win'):
-        os.system('cls') #Windows
-    else:
-        os.system('clear') #Linux o Mac
-
-    #Importar las librerias necesarias
-    import sympy as sp
-    from sympy import Symbol, Eq, solve
-    import os
-    import rich
-    import sys
-    from rich.console import Console
-    from rich.table import Table
-    from rich import print
-    from rich.panel import Panel
-    from rich.prompt import Prompt
-    from rich.text import Text
-    #from rich.style import Style
+#Llamar a la funcion install_packages
+instalar_paquetes()
+    
+#Importar las librerias necesarias para ejecutar el programa
+from time import sleep
+import sys
+import sympy as sp
+from sympy import Symbol, Eq, solve
+import os
+import rich
+import sys
+from rich.console import Console
+from rich.table import Table
+from rich import print
+from rich.panel import Panel
+from rich.prompt import Prompt
+from rich.text import Text
+#from rich.style import Style
 
 class Estudiante:
     def __init__(self, nota1, nota2, nota3):
@@ -48,7 +47,14 @@ class Estudiante:
         self.nota3 = nota3
         #Suma de notas minimas para aprobar
         self.Suma_Aprobatoria = 3
-    
+
+    #limpiar la terminal por sistema operativo
+    def Limpiar(self):
+        if sys.platform.startswith('win'):
+            os.system('cls') #Windows
+        else:
+            os.system('clear') #Linux o Mac
+        
     #Funcion para darle negrita a un texto
     def Negrita(self, texto):
         return f"[bold]{texto}[/bold]"
@@ -143,6 +149,8 @@ class Estudiante:
             try:
                 reiniciar = int(Prompt.ask("[bold]\n¿Desea volver a ejecutar el programa?[/bold] [1] Si [2] No -->"))
                 if reiniciar == 1:
+                    #Limpiar la terminal
+                    self.Limpiar()
                     #Llamar a la funcion Menu
                     self.Menu()
                     #Llamar a la funcion Preguntas
@@ -152,7 +160,7 @@ class Estudiante:
                     break
                 elif reiniciar == 2:
                     print("[bold]\n¡Gracias por usar el programa! :D[/bold]")
-                    sleep(10)
+                    sleep(2)
                     sys.exit()
                 else:
                     print("[bold red]\n¡ERROR![/bold red] La opción ingresada no es válida. Intente nuevamente...")
@@ -161,10 +169,10 @@ class Estudiante:
 
 
 if __name__ == '__main__':
-    #Llamar a la funcion install_packages
-    install_packages()
     #Instanciar la clase
     estudiante = Estudiante(None, None, None)
+    #Limpiar la terminal
+    estudiante.Limpiar()
     #Llamar a la funcion Menu
     estudiante.Menu()
     #Llamar a la funcion Preguntas
