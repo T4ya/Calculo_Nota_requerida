@@ -159,7 +159,7 @@ class Estudiante:
                     self.Reiniciar()
                     break
                 elif reiniciar == 2:
-                    print("[bold]\n¡Gracias por usar el programa! :D[/bold]")
+                    print("[bold green]\n¡Gracias por usar el programa! :D[/bold green]")
                     sleep(2)
                     sys.exit()
                 else:
