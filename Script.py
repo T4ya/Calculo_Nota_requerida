@@ -131,12 +131,6 @@ class Estudiante:
 
     #Funcion para limpiar la consola y preguntar si desea volver a ejecutar el programa
     def Reiniciar(self):
-        #Limpiar la consola verificando el sistema operativo
-        if os.name == "nt":
-            os.system("cls")
-        else:
-            os.system("clear")
-
         #Preguntar si desea volver a ejecutar el programa
         while True:
             try:
