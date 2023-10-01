@@ -140,7 +140,7 @@ class Estudiante:
                 print(f"[bold green]Sacando ({self.nota1}) en el parcial #1 y ({nota2}) en el parcial #2 ya aprobaste el curso necesitas sacar solo {solucion[0]:.2f} en el tercer parcial, ¡Felicidades! :D[/bold green]\n")
             else:
                 #Imprimir la solucion
-                print(f"[bold blue]Para aprobar el curso debes sacar en el tercer parcial: {solucion[0]:.2f}, ¡Ánimo![/bold blue]\n")
+                print(f"[bold blue]Si sacas {nota2} en el parcial #2, para aprobar el curso debes sacar {solucion[0]:.2f} en el tercer parcial, ¡Ánimo![/bold blue]\n")
 
     #Funcion para limpiar la consola y preguntar si desea volver a ejecutar el programa
     def Reiniciar(self):
