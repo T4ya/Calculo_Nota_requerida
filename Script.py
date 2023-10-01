@@ -10,29 +10,36 @@ import subprocess
 
 def install_packages():
     """
-    Install required packages using pip.
+    Instalar los paquetes necesarios para ejecutar el programa
     """
     packages = ['sympy', 'rich']
     for package in packages:
         try:
             subprocess.check_call(['pip', 'install', package])
         except subprocess.CalledProcessError as e:
-            print(f"[bold red]Error installing package {package}: {e}[/bold red]")
+            print(f"Error, no se han podido instalar los paquetes{package}: {e}\n")
         else:
-            print(f"[bold green]Package {package} installed successfully![/bold green]")
+            print(f"[bold green]Paquete {package} instalado satisfactoriamente \n![/bold green]")
 
-import sympy as sp
-from sympy import Symbol, Eq, solve
-import os
-import rich
-import sys
-from rich.console import Console
-from rich.table import Table
-from rich import print
-from rich.panel import Panel
-from rich.prompt import Prompt
-from rich.text import Text
-#from rich.style import Style
+    #limpiar la terminal por sistema operativo
+    if sys.platform.startswith('win'):
+        os.system('cls') #Windows
+    else:
+        os.system('clear') #Linux o Mac
+
+    #Importar las librerias necesarias
+    import sympy as sp
+    from sympy import Symbol, Eq, solve
+    import os
+    import rich
+    import sys
+    from rich.console import Console
+    from rich.table import Table
+    from rich import print
+    from rich.panel import Panel
+    from rich.prompt import Prompt
+    from rich.text import Text
+    #from rich.style import Style
 
 class Estudiante:
     def __init__(self, nota1, nota2, nota3):
@@ -145,6 +152,7 @@ class Estudiante:
                     break
                 elif reiniciar == 2:
                     print("[bold]\n¡Gracias por usar el programa! :D[/bold]")
+                    sleep(10)
                     sys.exit()
                 else:
                     print("[bold red]\n¡ERROR![/bold red] La opción ingresada no es válida. Intente nuevamente...")
