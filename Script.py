@@ -167,3 +167,5 @@ if __name__ == '__main__':
     estudiante.Menu()
     #Llamar a la funcion Preguntas
     estudiante.Preguntas()
+    #Llamar a la funcion Reiniciar
+    estudiante.Reiniciar()
