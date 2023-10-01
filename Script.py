@@ -20,9 +20,6 @@ def install_packages():
             print(f"[bold red]Error installing package {package}: {e}[/bold red]")
         else:
             print(f"[bold green]Package {package} installed successfully![/bold green]")
-            
-#Llamar a la funcion install_packages
-install_packages()
 
 import sympy as sp
 from sympy import Symbol, Eq, solve
@@ -132,10 +129,12 @@ class Estudiante:
                 #Imprimir la solucion
                 print(f"[bold blue]Para aprobar el curso debes sacar en el tercer parcial: {solucion[0]:.2f}, ¡Ánimo![/bold blue]\n")
 
-
-#Instanciar la clase
-estudiante = Estudiante(None, None, None)
-#Llamar a la funcion Menu
-estudiante.Menu()
-#Llamar a la funcion Preguntas
-estudiante.Preguntas()
+if __name__ == '__main__':
+    #Llamar a la funcion install_packages
+    install_packages()
+    #Instanciar la clase
+    estudiante = Estudiante(None, None, None)
+    #Llamar a la funcion Menu
+    estudiante.Menu()
+    #Llamar a la funcion Preguntas
+    estudiante.Preguntas()
