@@ -129,6 +129,35 @@ class Estudiante:
                 #Imprimir la solucion
                 print(f"[bold blue]Para aprobar el curso debes sacar en el tercer parcial: {solucion[0]:.2f}, ¡Ánimo![/bold blue]\n")
 
+    #Funcion para limpiar la consola y preguntar si desea volver a ejecutar el programa
+    def Reiniciar(self):
+        #Limpiar la consola verificando el sistema operativo
+        if os.name == "nt":
+            os.system("cls")
+        else:
+            os.system("clear")
+
+        #Preguntar si desea volver a ejecutar el programa
+        while True:
+            try:
+                reiniciar = int(Prompt.ask("[bold]\n¿Desea volver a ejecutar el programa?[/bold] [1] Si [2] No -->"))
+                if reiniciar == 1:
+                    #Llamar a la funcion Menu
+                    self.Menu()
+                    #Llamar a la funcion Preguntas
+                    self.Preguntas()
+                    #Llamar a la funcion Reiniciar
+                    self.Reiniciar()
+                    break
+                elif reiniciar == 2:
+                    print("[bold]\n¡Gracias por usar el programa! :D[/bold]")
+                    sys.exit()
+                else:
+                    print("[bold red]\n¡ERROR![/bold red] La opción ingresada no es válida. Intente nuevamente...")
+            except ValueError:
+                print("[bold red]\n¡ERROR![/bold red] El valor ingresado no es válido. Intente nuevamente...")
+
+
 if __name__ == '__main__':
     #Llamar a la funcion install_packages
     install_packages()
