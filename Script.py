@@ -6,6 +6,24 @@ hacen, para aprobar una curso, conociendo la nota del primer parcial Los proceng
 Esto lo tengo que hacer en python y crear un .exe que me ejecute el script
 '''
 
+import subprocess
+
+def install_packages():
+    """
+    Install required packages using pip.
+    """
+    packages = ['sympy', 'rich']
+    for package in packages:
+        try:
+            subprocess.check_call(['pip', 'install', package])
+        except subprocess.CalledProcessError as e:
+            print(f"[bold red]Error installing package {package}: {e}[/bold red]")
+        else:
+            print(f"[bold green]Package {package} installed successfully![/bold green]")
+            
+#Llamar a la funcion install_packages
+install_packages()
+
 import sympy as sp
 from sympy import Symbol, Eq, solve
 import os
@@ -34,7 +52,7 @@ class Estudiante:
     #Funcion para imprimir el menu en un panel
     def Menu(self):
         #Crear un panel
-        panel = Panel(Text("Bienvenido al programa para calcular la nota que necesitas para aprobar una curso\nElaborado por: Jeferson Yesid Gonzalez Ortiz :D", justify="center"), title="CALCULADORA DE NOTAS", style="bold white")
+        panel = Panel(Text("Bienvenido, yo te ayudaré en tu desesperación\nElaborado por: Jeferson Yesid Gonzalez Ortiz :D\nGithub: @T4ya", justify="center"), title="CALCULADORA DE NOTA REQUERIDA", style="bold white")
         #Imprimir el panel
         print(panel)
     
@@ -113,6 +131,7 @@ class Estudiante:
             else:
                 #Imprimir la solucion
                 print(f"[bold blue]Para aprobar el curso debes sacar en el tercer parcial: {solucion[0]:.2f}, ¡Ánimo![/bold blue]\n")
+
 
 #Instanciar la clase
 estudiante = Estudiante(None, None, None)
